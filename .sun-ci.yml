@@ -24,12 +24,11 @@ jobs:
   - RAILS_ENV=test bundle exec rake db:drop db:create db:migrate
 
   script:
-  - DISABLE_SPRING=1 bundle _2.1.4_ exec rspec --format progress --format html --out ~/sun-ci-reports/rspec.html 
-  - DISABLE_SPRING=1 bundle _2.1.4_ exec rspec --format progress --format RspecJunitFormatter --out ~/sun-ci-reports/coverage/junit.xml
+  - DISABLE_SPRING=1 bundle _2.1.4_ exec rspec --format progress --format html --out ./.sun-ci-reports/rspec.html spec --format RspecJunitFormatter --out ~/sun-ci-reports/coverage/junit.xml
   artifacts:
     paths:
-    - _/sun-ci-reports/coverage/
-    - _/sun-ci-reports/rspec.html
+    - ./.sun-ci-reports/coverage/
+    - ./.sun-ci-reports/rspec.html
     expires_in: 3 days
   test_result:
     type: junit
